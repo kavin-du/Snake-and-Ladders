@@ -80,6 +80,23 @@ def setImages():
     t3.penup()
     t3.goto(250, -140)
 
+    t4 = turtle.Turtle()
+    t4.shape("snake.gif")
+    t4.penup()
+    t4.goto(120, 120)
+
+    t5 = turtle.Turtle()
+    t5.shape("snake2.gif")
+    t5.penup()
+    t5.goto(0, -170)
+
+    t6 = turtle.Turtle()
+    t6.shape("snake3.gif")
+    t6.penup()
+    t6.goto(-240, -50)
+
+    
+
 if __name__ == '__main__':
 
     # turtle.getscreen() # gives center turtle
@@ -88,6 +105,9 @@ if __name__ == '__main__':
     turtle.addshape("ladder.gif")
     turtle.addshape("ladder2.gif")
     turtle.addshape("ladder3.gif")
+    turtle.addshape("snake.gif")
+    turtle.addshape("snake2.gif")
+    turtle.addshape("snake3.gif")
 
     setupGrid()
     boxNumbers()
