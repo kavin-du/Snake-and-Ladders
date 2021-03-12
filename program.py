@@ -70,10 +70,15 @@ def setImages():
     t1.penup()
     t1.goto(-100, -50)
 
+    t2 = turtle.Turtle()
+    t2.shape("ladder2.gif")
+    t2.penup()
+    t2.goto(0, 190)
 
-    t1.shape("ladder2.gif")
-    t1.penup()
-    t1.goto(-100, -50)
+    t3 = turtle.Turtle()
+    t3.shape("ladder3.gif")
+    t3.penup()
+    t3.goto(250, -140)
 
 if __name__ == '__main__':
 
@@ -84,7 +89,6 @@ if __name__ == '__main__':
     turtle.addshape("ladder2.gif")
     turtle.addshape("ladder3.gif")
 
-    # t = turtle.Turtle()
     setupGrid()
     boxNumbers()
     setImages()
