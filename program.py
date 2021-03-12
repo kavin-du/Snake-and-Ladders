@@ -29,7 +29,7 @@ def setupGrid():
         t.goto(x, 5*widthOfSquare/2)
         t.pendown()
         t.forward(5*widthOfSquare)
-    
+
 def boxNumbers():
     t = turtle.Turtle(visible=False)
     t.pen(pencolor="red", speed=10)
@@ -124,7 +124,8 @@ def startGame():
     while(True):
         dummy = input('Big Bad Bull: Press Enter to roll dice')
         bullDiceValue = random.randint(1, 6)
-        if(bullIndex <= 5 and bullIndex+bullDiceValue >= 6):
+        print(f'bull dice value: {bullDiceValue}')
+        if(bullIndex < 5 and bullIndex+bullDiceValue >= 6):
             moveBull(bull, cordinatesList[4])
             moveBull(bull, cordinatesList[5])
         elif(bullIndex <= 10 and bullIndex+bullDiceValue >= 11):
@@ -138,19 +139,44 @@ def startGame():
             moveBull(bull, cordinatesList[20])
 
         bullIndex += bullDiceValue
-
         if(bullIndex > 25):
             bullIndex = 25
-        print(f'You are on square {bullIndex}\n')
         moveBull(bull, cordinatesList[bullIndex-1])
+        
+        if(bullIndex == 5): # stairs
+            moveBull(bull, cordinatesList[14])
+            bullIndex = 15
+        elif(bullIndex == 9):
+            moveBull(bull, cordinatesList[11])
+            bullIndex = 12
+        elif(bullIndex == 18):
+            moveBull(bull, cordinatesList[22])
+            bullIndex = 23
+        elif(bullIndex == 8): # snakes
+            moveBull(bull, cordinatesList[2])
+            bullIndex = 3
+        elif(bullIndex == 20):
+            moveBull(bull, cordinatesList[0])
+            bullIndex = 1
+        elif(bullIndex == 24):
+            moveBull(bull, cordinatesList[13])
+            bullIndex = 14
 
-        if (bullIndex >= 25):
-            print('bull wins')
+        print(f'You are on square {bullIndex}\n')
+
+        if (bullIndex == 25):
+            print('Bull Wins')
+            turtle.clearscreen()
+            turtle.bgpic("win.gif")
+            dummy = input('Press Enter to start new game')
+            turtle.clearscreen()
             return
         # ------------------
         dummy = input('Fluffy Cow: Press Enter to roll dice')
         cowDiceValue = random.randint(1, 6)
-        if(cowIndex <= 5 and cowIndex+cowDiceValue >= 6):
+        print(f'cow dice value: {cowDiceValue}')
+
+        if(cowIndex < 5 and cowIndex+cowDiceValue >= 6):
             moveCow(cow, cordinatesList[4])
             moveCow(cow, cordinatesList[5])
         elif(cowIndex <= 10 and cowIndex+cowDiceValue >= 11):
@@ -164,19 +190,41 @@ def startGame():
             moveCow(cow, cordinatesList[20])
 
         cowIndex += cowDiceValue
-
         if(cowIndex > 25):
             cowIndex = 25
         moveCow(cow, cordinatesList[cowIndex-1])
+
+        if(cowIndex == 5): # stairs
+            moveCow(cow, cordinatesList[14])
+            cowIndex = 15
+        elif(cowIndex == 9):
+            moveCow(cow, cordinatesList[11])
+            cowIndex = 12
+        elif(cowIndex == 18):
+            moveCow(cow, cordinatesList[22])
+            cowIndex = 23
+        elif(cowIndex == 8): # snakes
+            moveCow(cow, cordinatesList[2])
+            cowIndex = 3
+        elif(cowIndex == 20):
+            moveCow(cow, cordinatesList[0])
+            cowIndex = 1
+        elif(cowIndex == 24):
+            moveCow(cow, cordinatesList[13])
+            cowIndex = 14
+
         print(f'You are on square {cowIndex}\n')
 
-        if(cowIndex >= 25):
+        if(cowIndex == 25):
             print('Cow Wins')
+            turtle.clearscreen()
+            turtle.bgpic("win.gif")
+            dummy = input('Press Enter to start new game')
+            turtle.clearscreen()
             return
 
 if __name__ == '__main__':
-
-    # turtle.getscreen() # gives center turtle
+    
     turtle.title('Python Turtle Graphics')
     turtle.setup(700, 700, 0, 0)
     turtle.addshape("ladder.gif")
@@ -187,21 +235,24 @@ if __name__ == '__main__':
     turtle.addshape("snake3.gif")
     turtle.addshape("bull.gif")
     turtle.addshape("cow.gif")
+    turtle.addshape("win.gif")
 
+    while(True):
+        setupGrid()
+        boxNumbers()
+        setImages()
 
-    setupGrid()
-    boxNumbers()
-    # setImages()
+        cow = turtle.Turtle()
+        cow.shape("cow.gif")
+        
+        bull = turtle.Turtle()
+        bull.shape("bull.gif")
 
-    cow = turtle.Turtle()
-    cow.shape("cow.gif")
-    
-    bull = turtle.Turtle()
-    bull.shape("bull.gif")
+        setCowAndBull(cow, bull)
+        startGame()
 
-    setCowAndBull(cow, bull)
+    # turtle.clearscreen()
+    # turtle.bgpic("win.gif")
 
-    startGame()
-
-    
     turtle.exitonclick()
+
