@@ -8,13 +8,25 @@ This is a Snakes and Ladders game that allows two players to
 participate in turns. 
 
 Developed by: ____
-Date Created: ____
+Date Created: 13/03/2021
+
+"""
+
+"""
+Note: 
+
+Developed using: Ubuntu 20.04, Python 3.8.5
+Tested using: Windows 10(version 1909), Python 3.8.5
+
+Compile and run: 
+    Ubuntu:     python3 program.py
+    Windows:    python program.py
 
 """
 
 # keeping these unchanged variables as global for easyness
 widthOfSquare = 120 
-# cordinates for the cow and bull, each tuple contains x, y cordinates values 
+# hardcoded cordinates for the cow and bull, each tuple contains x, y cordinates values 
 # for all the 25 squares
 cordinatesList = [(-250, -230), (-130, -230), (-10, -230), (110, -230), (230, -230),
                   (230, -110), (110, -110), (-10, -110), (-130, -110), (-250, -110),
@@ -190,13 +202,13 @@ def startGame():
         if(bullIndex < 5 and bullIndex+bullDiceValue >= 6):
             moveBull(bull, cordinatesList[4])
             moveBull(bull, cordinatesList[5])
-        elif(bullIndex <= 10 and bullIndex+bullDiceValue >= 11):
+        if(bullIndex <= 10 and bullIndex+bullDiceValue >= 11):
             moveBull(bull, cordinatesList[9])
             moveBull(bull, cordinatesList[10])
-        elif(bullIndex <= 15 and bullIndex+bullDiceValue >= 16):
+        if(bullIndex <= 15 and bullIndex+bullDiceValue >= 16):
             moveBull(bull, cordinatesList[14])
             moveBull(bull, cordinatesList[15])
-        elif(bullIndex <= 20 and bullIndex+bullDiceValue >= 21):
+        if(bullIndex <= 20 and bullIndex+bullDiceValue >= 21):
             moveBull(bull, cordinatesList[19])
             moveBull(bull, cordinatesList[20])
         
@@ -237,6 +249,7 @@ def startGame():
             print('Bull Wins')
             turtle.clearscreen() # clear everything in window
             turtle.bgpic("win.gif") # show win image
+            turtle.update()
             dummy = input('Press Enter to start new game') # wait to press Enter
             turtle.clearscreen() # clear win image
             return # return to main function
@@ -253,13 +266,13 @@ def startGame():
         if(cowIndex < 5 and cowIndex+cowDiceValue >= 6):
             moveCow(cow, cordinatesList[4])
             moveCow(cow, cordinatesList[5])
-        elif(cowIndex <= 10 and cowIndex+cowDiceValue >= 11):
+        if(cowIndex <= 10 and cowIndex+cowDiceValue >= 11):
             moveCow(cow, cordinatesList[9])
             moveCow(cow, cordinatesList[10])
-        elif(cowIndex <= 15 and cowIndex+cowDiceValue >= 16):
+        if(cowIndex <= 15 and cowIndex+cowDiceValue >= 16):
             moveCow(cow, cordinatesList[14])
             moveCow(cow, cordinatesList[15])
-        elif(cowIndex <= 20 and cowIndex+cowDiceValue >= 21):
+        if(cowIndex <= 20 and cowIndex+cowDiceValue >= 21):
             moveCow(cow, cordinatesList[19])
             moveCow(cow, cordinatesList[20])
 
@@ -300,6 +313,7 @@ def startGame():
             print('Cow Wins')
             turtle.clearscreen() # clear everything
             turtle.bgpic("win.gif") # show win image
+            turtle.update()
             dummy = input('Press Enter to start new game') # wait to press Enter
             turtle.clearscreen() # clear win image
             return # return to main function
