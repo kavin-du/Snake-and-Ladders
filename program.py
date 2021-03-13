@@ -176,7 +176,28 @@ def moveBull(bull, cordinates):
     # the bull is positioned 40 units below the cow
     # along y axis
     bull.goto(cordinates[0], cordinates[1]-40)
-    
+
+def updateDiceImage(dice, value):
+    """ 
+    Function for updating the dice image based on
+    the dice value
+    """
+    dice.showturtle() # showing the turtle
+
+    # set the correct .gif according to value
+    if(value == 1):
+        dice.shape("dice1.gif")
+    elif(value == 2):
+        dice.shape("dice2.gif")
+    elif(value == 3):
+        dice.shape("dice3.gif")
+    elif(value == 4):
+        dice.shape("dice4.gif")
+    elif(value == 5):
+        dice.shape("dice5.gif")
+    elif(value == 6):
+        dice.shape("dice6.gif")
+
 def startGame():
     """ 
     Function for keep the game running until user interrupts by keyboard
@@ -196,6 +217,8 @@ def startGame():
         
         # generating a random value between 1-6 for the bull
         bullDiceValue = random.randint(1, 6)
+        
+        updateDiceImage(dice, bullDiceValue) # update the dice image
         print(f'bull dice value: {bullDiceValue}') # printing the dice value
         
         # logic for moving between corner squares
@@ -259,6 +282,8 @@ def startGame():
         dummy = input('Fluffy Cow: Press Enter to roll dice')
         # generating dice value for cow
         cowDiceValue = random.randint(1, 6)
+        updateDiceImage(dice, cowDiceValue) # update dice image
+        
         # printing dice value
         print(f'cow dice value: {cowDiceValue}')
 
@@ -333,6 +358,12 @@ if __name__ == '__main__':
     turtle.addshape("bull.gif")
     turtle.addshape("cow.gif")
     turtle.addshape("win.gif")
+    turtle.addshape("dice1.gif")
+    turtle.addshape("dice2.gif")
+    turtle.addshape("dice3.gif")
+    turtle.addshape("dice4.gif")
+    turtle.addshape("dice5.gif")
+    turtle.addshape("dice6.gif")
 
     # the game runs infinitely until user interrupts by keyboard
     while(True):
@@ -347,6 +378,12 @@ if __name__ == '__main__':
         # creating bull figure
         bull = turtle.Turtle()
         bull.shape("bull.gif")
+
+        dice = turtle.Turtle() # create a turtle for dice image
+        # hide it initially and position on the left side of window
+        dice.hideturtle()
+        dice.penup()
+        dice.goto(-325, 0)
 
         # move cow and bull to intial positions
         setCowAndBull(cow, bull)
