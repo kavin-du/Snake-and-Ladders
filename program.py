@@ -7,7 +7,7 @@ Basic Game Development in Python
 This is a Snakes and Ladders game that allows two players to
 participate in turns. 
 
-Developed by: ____
+Developed by: Kavindu Chamith 
 Date Created: 13/03/2021
 
 """
